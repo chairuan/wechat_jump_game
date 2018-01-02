@@ -131,14 +131,17 @@ def set_button_position(im):
 
 
 def jump(distance):
+    time_random = random.randint(1, 3) # 随机数
+    time.sleep(1 + time_random)
     press_time = distance * press_coefficient
     press_time = max(press_time, 200)   # 设置 200 ms 是最小的按压时间
     press_time = int(press_time)
+    num_random = random.randint(1, 100) # 随机数
     cmd = 'adb shell input swipe {x1} {y1} {x2} {y2} {duration}'.format(
-        x1=swipe_x1,
-        y1=swipe_y1,
-        x2=swipe_x2,
-        y2=swipe_y2,
+        x1=swipe_x1 + num_random,
+        y1=swipe_y1 + num_random,
+        x2=swipe_x2 + num_random,
+        y2=swipe_y2 + num_random,
         duration=press_time
     )
     print(cmd)
